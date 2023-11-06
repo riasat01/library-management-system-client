@@ -1,5 +1,5 @@
 import logo from '../assets/logo.gif';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { BiSolidFoodMenu } from 'react-icons/bi';
 import { useState } from 'react';
 
@@ -31,7 +31,7 @@ const Navabar = () => {
         </li>
         <li>
             <NavLink
-                to="/"
+                to="/add_books"
                 className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? "text-lg text-transparent font-semibold duration-500 bg-gradient-to-tr from-cyan-500 to-blue-500 bg-clip-text drop-shadow-lg" : "text-white font-normal duration-500"
                 }
@@ -51,7 +51,7 @@ const Navabar = () => {
         </li>
     </>
     return (
-        <section className='absolute w-full inset-0 z-10'>
+        <section className='absolute w-full inset-0 z-10 h-fit'>
             <div className="flex justify-between items-center px-4 py-3 bg-slate-800 bg-opacity-60">
                 <section className='flex justify-between items-center w-full md:w-fit'>
                     <section className='flex gap-4 justify-center items-center'>
@@ -65,7 +65,7 @@ const Navabar = () => {
                                 navLlinks
                             }
                             <li>
-                                <button className='px-5 py-1 my-1 rounded-lg bg-transparent hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[0px_5px_2rem_1px_purple] '>Login</button>
+                            <Link to='/login'><button className='px-5 py-1 my-1 rounded-lg bg-transparent hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[0px_5px_2rem_1px_purple] '>Login</button></Link>
                             </li>
                         </ul>
                     </section>
@@ -79,7 +79,7 @@ const Navabar = () => {
                     </ul>
                 </section>
                 <section className=' hidden md:block'>
-                    <button className='px-5 py-2 rounded-lg bg-transparent hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[1px_-1px_1rem_0px_cyan] '>Login</button>
+                    <Link to='/login'><button className='px-5 py-2 rounded-lg bg-transparent hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[1px_-1px_1rem_0px_cyan] '>Login</button></Link>
                 </section>
             </div>
         </section>
