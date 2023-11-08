@@ -8,6 +8,7 @@ import AddBook from '../pages/add-book/AddBook';
 import BorrowedBooks from '../pages/borrowed-books/BorrowedBooks';
 import Books from '../pages/books/Books';
 import BookDetails from '../pages/book-details/BookDetails';
+import PrivateRoute from './PrivateRoute';
 
 const MainRoute = createBrowserRouter([
     {
@@ -20,19 +21,19 @@ const MainRoute = createBrowserRouter([
             },
             {
                 path: '/books',
-                element: <Books></Books>
+                element: <PrivateRoute><Books></Books></PrivateRoute>
             },
             {
                 path: '/book/:id',
-                element: <BookDetails></BookDetails>
+                element: <PrivateRoute><BookDetails></BookDetails></PrivateRoute>
             },
             {
                 path: '/add_books',
-                element: <AddBook></AddBook>
+                element: <PrivateRoute><AddBook></AddBook></PrivateRoute>
             },
             {
                 path: '/borrowed',
-                element: <BorrowedBooks></BorrowedBooks>
+                element: <PrivateRoute><BorrowedBooks></BorrowedBooks></PrivateRoute>
             },
             {
                 path: '/login',

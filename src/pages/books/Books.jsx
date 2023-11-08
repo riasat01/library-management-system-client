@@ -22,7 +22,7 @@ const Books = () => {
         <section className="mx-4 md:mx-12 lg:mx-24">
             <section className="flex justify-between items-center">
                 <h1 className="my-24 border-b-4 border-cyan-500 text-lg md:text-3xl font-bold bg-gradient-to-tr from-cyan-500 to-blue-500 bg-clip-text animate-pulse leading-10 p-4 w-fit">Book Category: {category}</h1>
-                    <select onChange={(e) => setCategory(e.target.value)} className="w-fit rounded-2xl py-2 px-4 bg-slate-400 bg-opacity-50 text-white" name="category" placeholder="Category" id="category">
+                    <select onChange={(e) => setCategory(e.target.value)} className="w-fit rounded-2xl py-2 px-4 bg-slate-700 bg-opacity-70 text-white" name="category" placeholder="Category" id="category">
                         <option value="All" >All</option>
                         <option value="Novel">Novel</option>
                         <option value="Thriller">Thriller</option>
