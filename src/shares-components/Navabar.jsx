@@ -41,7 +41,7 @@ const Navabar = () => {
         </li>
         <li>
             <NavLink
-                to="/"
+                to="/borrowed"
                 className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? "text-lg text-transparent font-semibold duration-500 bg-gradient-to-tr from-cyan-500 to-blue-500 bg-clip-text drop-shadow-lg" : "text-white font-normal duration-500"
                 }
@@ -60,7 +60,7 @@ const Navabar = () => {
                     </section>
                     <section className='block md:hidden'>
                         <BiSolidFoodMenu onClick={() => setShow(!show)} className='text-3xl text-white '></BiSolidFoodMenu>
-                        <ul className={`absolute ${show ? 'right-10' : '-right-96'} top-20 text-right duration-500`}>
+                        <ul className={`absolute ${show ? 'top-20' : '-top-96'} right-10 text-right duration-500`}>
                             {
                                 navLlinks
                             }
