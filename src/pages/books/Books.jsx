@@ -9,9 +9,9 @@ const Books = () => {
     const [category, setCategory] = useState('All');
 
     // response through axios interceptor
-    const AxiosSecure = useAxiosSecure();
+    const axiosSecure = useAxiosSecure();
     useEffect(() => {
-        AxiosSecure.get(`/books?category=${category}`)
+        axiosSecure.get(`/books?category=${category}`)
             .then(res => {
                 // console.log(res);
                 setBooks(res?.data);
