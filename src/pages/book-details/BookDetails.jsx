@@ -1,16 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useAxiosSecure from "../../custom-hooks/useAxiosSecure";
 import swal from "sweetalert";
 import BorrowModal from "./book-details-components/BorrowModal";
+import { UserAuth } from "../../auth-provider/AuthProvider";
 
 
 const BookDetails = () => {
     const axiosSecure = useAxiosSecure();
     const params = useParams();
     const [book, setBook] = useState({});
+    const { user } = useContext(UserAuth);
     useEffect(() => {
-        axiosSecure.get(`/book/${params.id}`)
+        axiosSecure.get(`/book/${params.id}?email=${user?.email}`)
             .then(res => {
                 // console.log(res);
                 setBook(res?.data);

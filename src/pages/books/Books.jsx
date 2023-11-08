@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "../../custom-hooks/useAxiosSecure";
 import swal from 'sweetalert';
 import BookCard from "./books-component/BookCard";
+import { UserAuth } from "../../auth-provider/AuthProvider";
 
 const Books = () => {
-
+    const { user } = useContext(UserAuth);
     const [books, setBooks] = useState([]);
     const [category, setCategory] = useState('All');
 
     // response through axios interceptor
     const axiosSecure = useAxiosSecure();
     useEffect(() => {
-        axiosSecure.get(`/books?category=${category}`)
+        axiosSecure.get(`/books?category=${category}&email=${user?.email}`)
             .then(res => {
                 // console.log(res);
                 setBooks(res?.data);
