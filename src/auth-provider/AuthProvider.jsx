@@ -57,6 +57,7 @@ const AuthProvider = ({ children }) => {
         const unsubscsribe = onAuthStateChanged(auth, (currentUser) => {
             const email = currentUser?.email || user?.email;
             const loggeduser = { email: email };
+            console.log(currentUser)
             setUser(currentUser);
             setLoading(false);
             // if user exitst then issue a token

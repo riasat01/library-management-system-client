@@ -11,11 +11,13 @@ const BookDetails = () => {
     const params = useParams();
     const [book, setBook] = useState({});
     const { user } = useContext(UserAuth);
+    const [isZero, setIsZero] = useState();
     useEffect(() => {
         axiosSecure.get(`/book/${params.id}?email=${user?.email}`)
             .then(res => {
                 // console.log(res);
                 setBook(res?.data);
+                setIsZero(parseInt(book.quantity));
             })
             .catch(error => swal('Error', `${error.message}`, 'error'));
     }, [])
@@ -36,7 +38,13 @@ const BookDetails = () => {
                         <p>Rating: {rating}</p>
                     </section>
                     <div className="card-actions w-full">
-                        <button className='w-full px-5 py-2 rounded-lg bg-transparent hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[1px_-1px_1rem_0px_cyan]' onClick={() => document.getElementById('my_modal_3').showModal()}>Borrow</button>
+                        {
+                            isZero ?
+                            <button className='w-full px-5 py-2 rounded-lg bg-transparent hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[1px_-1px_1rem_0px_cyan]' onClick={() => document.getElementById('my_modal_3').showModal()}>Borrow</button>
+                            :
+                            <button className='w-full px-5 py-2 rounded-lg bg-transparent hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[1px_-1px_1rem_0px_cyan]' onClick={() => document.getElementById('my_modal_3').showModal()} disabled>Borrow</button>
+                        }
+                        
                         <button className='w-full px-5 py-2 rounded-lg bg-transparent hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[1px_-1px_1rem_0px_cyan]'>Read</button>
                     </div>
                 </div>
