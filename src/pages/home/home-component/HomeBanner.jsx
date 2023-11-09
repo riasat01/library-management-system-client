@@ -1,17 +1,28 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import h1 from '../../../assets/home-banner/home-b-1.jpg'
-import h2 from '../../../assets/home-banner/home-b-2.jpg'
-import h3 from '../../../assets/home-banner/home-b-3.jpg'
 import BannerCard from './BannerCard'
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { useState } from 'react';
+import useAxiosSecure from '../../../custom-hooks/useAxiosSecure';
+import { useEffect } from 'react';
 
 const HomeBanner = () => {
+    const [bannerData, setBannerData] = useState([]);
+    const axiosSecure = useAxiosSecure();
 
-    const banners = [h1, h2, h3];
+    useEffect(() => {
+        axiosSecure.get('/banner')
+            .then(res => {
+                // console.log(res?.data);
+                setBannerData(res?.data);
+            })
+            .catch(error => console.log(error.message));
+    }, [])
+
+
     return (
         <div>
             <>
@@ -30,31 +41,8 @@ const HomeBanner = () => {
                     className="mySwiper"
                 >
                     {
-                        banners.map((img, i) => <SwiperSlide key={i}><BannerCard img={img}></BannerCard></SwiperSlide>)
+                        bannerData?.map((banner, i) => <SwiperSlide key={i}><BannerCard banner={banner}></BannerCard></SwiperSlide>)
                     }
-                    {/* <SwiperSlide>
-                        
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div style={{
-                            backgroundImage: `url(${photoURLs?.photo_2}), linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1))`,
-                            backgroundBlendMode: 'overlay',
-                            backgroundSize: 'cover'
-                        }}
-                            className="h-[80vh] flex justify-center items-center pt-16">
-                            <h1 className="md:w-2/3 text-2xl ml-8 md:mx-0 md:text-5xl lg:text-7xl font-extrabold text-transparent font-indie-flower bg-gradient-to-br from-orange-300 to-red-700 bg-clip-text">{titles?.title_2}</h1>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div style={{
-                            backgroundImage: `url(${photoURLs?.photo_3}), linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1))`,
-                            backgroundBlendMode: 'overlay',
-                            backgroundSize: 'cover'
-                        }}
-                            className="h-[80vh] flex justify-center items-center pt-16">
-                            <h1 className="md:w-2/3 text-2xl ml-8 md:mx-0 md:text-5xl lg:text-7xl font-extrabold text-transparent font-indie-flower bg-gradient-to-br from-orange-300 to-red-700 bg-clip-text">{titles?.title_3}</h1>
-                        </div>
-                    </SwiperSlide> */}
                 </Swiper>
             </>
         </div>
