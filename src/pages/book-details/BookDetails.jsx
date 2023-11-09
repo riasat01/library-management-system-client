@@ -5,6 +5,7 @@ import swal from "sweetalert";
 import BorrowModal from "./book-details-components/BorrowModal";
 import { UserAuth } from "../../auth-provider/AuthProvider";
 import Rating from "../../shares-components/Rating";
+import { Link } from 'react-router-dom';
 
 
 const BookDetails = () => {
@@ -49,8 +50,9 @@ const BookDetails = () => {
                                 :
                                 <button className='w-full px-5 py-2 rounded-lg bg-red-200  text-lg font-semibold text-white border-2  border-red-500 ' disabled>Borrow</button>
                         }
-
-                        <button className='w-full px-5 py-2 rounded-lg bg-slate-300 hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[1px_-1px_1rem_0px_cyan]'>Read</button>
+                        <Link className="w-full" to={`/read/${params.id}`}>
+                            <button className='w-full px-5 py-2 rounded-lg bg-slate-300 hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[1px_-1px_1rem_0px_cyan]'>Read</button>
+                        </Link>
                     </div>
                 </div>
             </div>
