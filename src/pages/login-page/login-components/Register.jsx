@@ -53,11 +53,11 @@ const Register = () => {
             <h1 className="mb-12 border-b-4 border-cyan-500 text-lg md:text-3xl font-bold bg-gradient-to-tr from-cyan-500 to-blue-500 bg-clip-text animate-pulse leading-10 py-4 w-fit">Register</h1>
             <section className="flex justify-center items-center">
                 <form onSubmit={handleRegister} className="space-y-6">
-                    <input className="w-full text-white rounded-2xl py-2 px-4 bg-slate-700 bg-opacity-70" type="text" name="name" placeholder="Name" id="first" />
+                    <input className="w-full text-white rounded-2xl py-2 px-4 bg-slate-700 bg-opacity-70" type="text" name="name" placeholder="Name" id="name" required/>
                     
-                    <input className="w-full text-white rounded-2xl py-2 px-4 bg-slate-700 bg-opacity-70" type="text" name="photo" placeholder="Photo URL" id="photo" />
-                    <input className="w-full text-white rounded-2xl py-2 px-4 bg-slate-700 bg-opacity-70" type="email" name="eamil" placeholder="Email" id="email" />
-                    <input className="w-full text-white rounded-2xl py-2 px-4 bg-slate-700 bg-opacity-70" type="password" name="password" placeholder="Password" id="password" />
+                    <input className="w-full text-white rounded-2xl py-2 px-4 bg-slate-700 bg-opacity-70" type="text" name="photo" placeholder="Photo URL" id="photo" required/>
+                    <input className="w-full text-white rounded-2xl py-2 px-4 bg-slate-700 bg-opacity-70" type="email" name="eamil" placeholder="Email" id="email" required/>
+                    <input className="w-full text-white rounded-2xl py-2 px-4 bg-slate-700 bg-opacity-70" type="password" name="password" placeholder="Password" id="password" required/>
                     <input className="w-full px-5 py-2 rounded-2xl bg-transparent hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[1px_-1px_1rem_0px_cyan] " type="submit" value="Register" />
                     <p>Already have an account? Please <Link to='/login' className="font-semibold text-transparent bg-gradient-to-tr from-cyan-500 to-blue-500 bg-clip-text border-b-2 border-cyan-600">Login</Link></p>
                 </form>

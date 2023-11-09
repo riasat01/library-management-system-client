@@ -20,7 +20,8 @@ const BookDetails = () => {
                 setIsZero(parseInt(book.quantity));
             })
             .catch(error => swal('Error', `${error.message}`, 'error'));
-    }, [])
+    }, [user?.email, book?.quantity])
+    console.log(isZero);
     const { image_url, name, quantity, author, category, description, rating } = book;
     return (
         <>
@@ -40,12 +41,12 @@ const BookDetails = () => {
                     <div className="card-actions w-full">
                         {
                             isZero ?
-                            <button className='w-full px-5 py-2 rounded-lg bg-transparent hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[1px_-1px_1rem_0px_cyan]' onClick={() => document.getElementById('my_modal_3').showModal()}>Borrow</button>
+                            <button className='w-full px-5 py-2 rounded-lg bg-slate-300 hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[1px_-1px_1rem_0px_cyan]' onClick={() => document.getElementById('my_modal_3').showModal()}>Borrow</button>
                             :
-                            <button className='w-full px-5 py-2 rounded-lg bg-transparent hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[1px_-1px_1rem_0px_cyan]' onClick={() => document.getElementById('my_modal_3').showModal()} disabled>Borrow</button>
+                            <button className='w-full px-5 py-2 rounded-lg bg-red-200  text-lg font-semibold text-white border-2  border-red-500 ' disabled>Borrow</button>
                         }
                         
-                        <button className='w-full px-5 py-2 rounded-lg bg-transparent hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[1px_-1px_1rem_0px_cyan]'>Read</button>
+                        <button className='w-full px-5 py-2 rounded-lg bg-slate-300 hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[1px_-1px_1rem_0px_cyan]'>Read</button>
                     </div>
                 </div>
             </div>

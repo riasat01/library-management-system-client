@@ -53,8 +53,8 @@ const BorrowModal = ({ book }) => {
                     <input className="w-full text-white rounded-2xl py-2 px-4 bg-slate-400 bg-opacity-50" type="email" name="eamil" defaultValue={user?.email} id="email" />
                     <input className="w-full text-white rounded-2xl py-2 px-4 bg-slate-400 bg-opacity-50" type="text" name="name" defaultValue={user?.displayName} id="name" />
                     <input className="w-full text-white rounded-2xl py-2 px-4 bg-slate-400 bg-opacity-50" type="date" name="borrow" defaultValue={new Date().toISOString().slice(0, 10)} id="borrow" />
-                    <input className="w-full text-white rounded-2xl py-2 px-4 bg-slate-400 bg-opacity-50" type="date" name="return" placeholder="Return date" id="date" />
-                    <input className="w-full px-5 py-2 rounded-2xl bg-transparent hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[1px_-1px_1rem_0px_cyan] " type="submit" value="Submit" />
+                    <input className="w-full text-white rounded-2xl py-2 px-4 bg-slate-400 bg-opacity-50" type="date" name="return" placeholder="Return date" id="date" required/>
+                    <input className="w-full px-5 py-2 rounded-2xl bg-slate-400 hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[1px_-1px_1rem_0px_cyan] " type="submit" value="Submit" />
                 </form>
             </div>
             <ToastContainer />
