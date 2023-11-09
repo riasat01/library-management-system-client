@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import img from '../../../../assets/home-banner/home-b-1.jpg'
+import PropTypes from 'prop-types';
 
 const CategoryCard = ({ category }) => {
     const {name, image_url} = category;
@@ -15,5 +15,9 @@ const CategoryCard = ({ category }) => {
         </div>
     );
 };
+
+CategoryCard.propTypes = {
+    category: PropTypes.object
+}
 
 export default CategoryCard;

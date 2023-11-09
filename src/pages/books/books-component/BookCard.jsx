@@ -4,7 +4,7 @@ import Rating from '../../../shares-components/Rating';
 
 const BookCard = ({ book }) => {
 
-    const { _id, image_url, name, quantity, author, category, description, rating } = book;
+    const { _id, image_url, name, author, category, rating } = book;
     return (
         <div className="card card-compact bg-base-100 shadow-xl">
             <figure><img className='h-64 w-full' src={image_url} alt={`image of ${name}`} /></figure>

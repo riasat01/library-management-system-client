@@ -1,5 +1,6 @@
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { BsStarHalf } from 'react-icons/bs';
+import PropTypes from 'prop-types';
 
 const Rating = ({ rating }) => {
     let full = parseInt(rating);
@@ -34,5 +35,9 @@ const Rating = ({ rating }) => {
         </div>
     );
 };
+
+Rating.propTypes = {
+    rating: PropTypes.string
+}
 
 export default Rating;
