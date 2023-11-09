@@ -98,7 +98,8 @@ const AuthProvider = ({ children }) => {
         setUserName,
         deleteAccount,
         logOut,
-        toggleTheme
+        toggleTheme,
+        theme
     };
 
     return (

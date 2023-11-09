@@ -4,12 +4,16 @@ import { BiSolidFoodMenu } from 'react-icons/bi';
 import { useContext, useState } from 'react';
 import { UserAuth } from '../auth-provider/AuthProvider';
 import swal from 'sweetalert';
+import { BsMoonStarsFill, BsSun } from 'react-icons/bs';
+import { useEffect } from 'react';
 
 const Navabar = () => {
     // state to show or hide navbar on mobiles
     const [show, setShow] = useState(false);
+    // toggler
+    const [toggle, setToggle] = useState(true);
     // auth info and functions
-    const { user, logOut, loading, toggleTheme } = useContext(UserAuth);
+    const { user, logOut, loading, toggleTheme, theme } = useContext(UserAuth);
 
 
     // sign out User
@@ -28,6 +32,15 @@ const Navabar = () => {
 
     // navlinks
     const navLlinks = <>
+        <li onClick={handleTheme} className='text-center my-2 md:my-0'>
+            {/* <button onClick={handleTheme} className='px-5 py-1 my-1 rounded-lg bg-transparent hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[0px_5px_2rem_1px_cyan] '>Toggle Theme</button> */}
+            {
+                toggle ?
+                    <BsSun onClick={() => setToggle(!toggle)} className='w-fit text-white text-xl font-semibold'></BsSun>
+                    :
+                    <BsMoonStarsFill onClick={() => setToggle(!toggle)} className='w-fit text-white text-xl font-semibold'></BsMoonStarsFill>
+            }
+        </li>
         <li>
             <NavLink
                 to="/"
@@ -68,21 +81,19 @@ const Navabar = () => {
                 Borrowed Books
             </NavLink>
         </li>
-        <li>
-            <button onClick={handleTheme} className='px-5 py-1 my-1 rounded-lg bg-transparent hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[0px_5px_2rem_1px_cyan] '>Toggle Theme</button>
-        </li>
     </>
+    useEffect(() => { }, [theme]);
     return (
         <section className='absolute w-full inset-0 z-10 h-fit'>
             <div className="flex justify-between items-center px-4 py-3 bg-slate-800 bg-opacity-60">
                 <section className='flex justify-between items-center w-full md:w-fit'>
                     <section className='flex gap-4 justify-center items-center'>
                         <img src={logo} alt="logo" className='h-16' />
-                        <h1>PapyrusPortal</h1>
+                        <h1 className='text-white text-xl font-semibold'>PapyrusPortal</h1>
                     </section>
                     <section className='block md:hidden'>
                         <BiSolidFoodMenu onClick={() => setShow(!show)} className='text-3xl text-white '></BiSolidFoodMenu>
-                        <ul className={`absolute ${show ? 'top-20' : '-top-96'} right-10 text-right duration-500 bg-slate-700 bg-opacity-70 p-4 rounded-xl`}>
+                        <ul className={`absolute ${show ? 'top-20' : '-top-96'} right-4 text-right duration-500 bg-slate-700 bg-opacity-70 p-4 rounded-xl`}>
                             {
                                 navLlinks
                             }
@@ -93,22 +104,22 @@ const Navabar = () => {
                                     user ?
                                         <section className="flex gap-6 items-center">
                                             <details className="dropdown dropdown-end">
-                                            <summary className="p-0 btn">
-                                            {
-                                                user?.photoURL ?
-                                                    <img className="h-10 rounded-full" src={user?.photoURL} alt={`image of ${user.displayName}`} />
-                                                    :
-                                                    <div className="avatar online placeholder">
-                                                        <div className="bg-neutral-focus text-neutral-content rounded-full w-16">
-                                                            <span className="text-xl">{user?.displayName}</span>
-                                                        </div>
-                                                    </div>
-                                            }
+                                                <summary className="p-0 btn bg-transparent hover:bg-transparent border-0">
+                                                    {
+                                                        user?.photoURL ?
+                                                            <img className="h-14 w-14 rounded-full" src={user?.photoURL} alt={`image of ${user.displayName}`} />
+                                                            :
+                                                            <div className="avatar online placeholder">
+                                                                <div className="bg-neutral-focus text-neutral-content rounded-full w-16">
+                                                                    <span className="text-xl">{user?.displayName}</span>
+                                                                </div>
+                                                            </div>
+                                                    }
 
-                                        </summary>
+                                                </summary>
                                                 <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                                                     <li><p>{user.displayName}</p></li>
-                                                    <li><button onClick={handleSignOut} className="bg-slate-700 bg-opacity-50 hover:bg-opacity-100 hover:bg-gradient-to-br from-orange-400 to-red-700 hover:text-white rounded-xl px-4 py-2 font-semibold">Log Out</button></li>
+                                                    <li><button onClick={handleSignOut} className='px-5 py-1 my-1 rounded-lg bg-transparent hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[0px_5px_2rem_1px_cyan] '>Log Out</button></li>
                                                 </ul>
                                             </details>
                                         </section>
@@ -136,10 +147,10 @@ const Navabar = () => {
                             user ?
                                 <section className="flex gap-6 items-center">
                                     <details className="dropdown dropdown-end">
-                                        <summary className="p-0 btn">
+                                        <summary className="p-0 btn bg-transparent hover:bg-transparent border-0">
                                             {
                                                 user?.photoURL ?
-                                                    <img className="h-10 rounded-full" src={user?.photoURL} alt={`image of ${user.displayName}`} />
+                                                    <img className="h-14 w-14 rounded-full" src={user?.photoURL} alt={`image of ${user.displayName}`} />
                                                     :
                                                     <div className="avatar online placeholder">
                                                         <div className="bg-neutral-focus text-neutral-content rounded-full w-16">
@@ -151,7 +162,7 @@ const Navabar = () => {
                                         </summary>
                                         <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                                             <li><p>{user.displayName}</p></li>
-                                            <li><button onClick={handleSignOut} className="bg-slate-700 bg-opacity-50 hover:bg-opacity-100 hover:bg-gradient-to-br from-orange-400 to-red-700 hover:text-white rounded-xl px-4 py-2 font-semibold">Log Out</button></li>
+                                            <li><button onClick={handleSignOut} className='px-5 py-1 my-1 rounded-lg bg-slate-400 bg-opacity-50 hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[0px_5px_2rem_1px_cyan] '>Log Out</button></li>
                                         </ul>
                                     </details>
                                 </section>

@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
+import Rating from '../../../shares-components/Rating';
 
 const BorrowedCard = ({ book, handleReturn }) => {
     const { _id, image_url, name, quantity, author, category, description, rating } = book;
 
-    
+
     return (
         <div className="card card-compact bg-base-100 shadow-xl">
             <figure><img className='h-64 w-full' src={image_url} alt={`image of ${name}`} /></figure>
@@ -14,8 +15,11 @@ const BorrowedCard = ({ book, handleReturn }) => {
                     <p>Author: {author}</p>
                 </section>
                 <section className='flex justify-between items-center flex-grow'>
-                    <p>Quantity: {quantity}</p>
-                    <p>Rating: {rating}</p>
+                    {/* <p>Quantity: {quantity}</p> */}
+                    <div className='flex justify-center items-center gap-2'>
+                        <p>Rating: </p>
+                        <Rating rating={rating}></Rating>
+                    </div>
                 </section>
                 <div className="card-actions w-full">
                     <button onClick={() => handleReturn(name, author, category, _id)} className='w-full px-5 py-2 rounded-lg bg-slate-300 hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[1px_-1px_1rem_0px_cyan] '>Return</button>

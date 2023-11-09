@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Rating from '../../../shares-components/Rating';
 
 const BookCard = ({ book }) => {
 
@@ -14,8 +15,11 @@ const BookCard = ({ book }) => {
                     <p>Author: {author}</p>
                 </section>
                 <section className='flex justify-between items-center flex-grow'>
-                    <p>Quantity: {quantity}</p>
-                    <p>Rating: {rating}</p>
+                    {/* <p>Quantity: {quantity}</p> */}
+                    <div className='flex justify-center items-center gap-2'>
+                        <p>Rating: </p>
+                        <Rating rating={rating}></Rating>
+                    </div>
                 </section>
                 <div className="card-actions w-full space-y-2">
                     <Link to={`/book/${_id}`} className='w-full'>
