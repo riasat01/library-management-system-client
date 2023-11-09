@@ -21,7 +21,7 @@ const BookDetails = () => {
             })
             .catch(error => swal('Error', `${error.message}`, 'error'));
     }, [user?.email, book?.quantity])
-    console.log(isZero);
+    // console.log(isZero);
     const { image_url, name, quantity, author, category, description, rating } = book;
     return (
         <>

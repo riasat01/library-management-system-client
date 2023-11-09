@@ -17,9 +17,12 @@ const BookCard = ({ book }) => {
                     <p>Quantity: {quantity}</p>
                     <p>Rating: {rating}</p>
                 </section>
-                <div className="card-actions w-full">
+                <div className="card-actions w-full space-y-2">
                     <Link to={`/book/${_id}`} className='w-full'>
                         <button className='w-full px-5 py-2 rounded-lg bg-slate-300 hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[1px_-1px_1rem_0px_cyan] '>Details</button>
+                    </Link>
+                    <Link to={`/update/${_id}`} className='w-full'>
+                        <button className='w-full px-5 py-2 rounded-lg bg-slate-300 hover:bg-gradient-to-tr from-cyan-500 to-blue-500 text-lg font-semibold text-white border-2 hover:border-0 border-cyan-500 hover:shadow-[1px_-1px_1rem_0px_cyan] '>Update</button>
                     </Link>
                 </div>
             </div>
